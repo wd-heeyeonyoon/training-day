@@ -1,4 +1,4 @@
-const toggleBtn = document.querySelector(".toggle-btn");
+const toggleBtn = document.querySelector("#toggle-btn");
 const toggleImg = document.querySelector("#toggle-img");
 
 toggleBtn.addEventListener("click", () => {

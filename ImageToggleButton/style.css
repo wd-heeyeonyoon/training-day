@@ -29,7 +29,7 @@ body {
   visibility: hidden;
 }
 
-.toggle-btn {
+#toggle-btn {
   width: 150px;
   height: 50px;
   font-size: 18px;
@@ -42,17 +42,17 @@ body {
   cursor: pointer;
 }
 
-.toggle-btn:hover {
+#toggle-btn:hover {
   background-color: #ababab;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.toggle-btn.hidden {
+#toggle-btn.hidden {
   background-color: #97afb3;
   color: #fff;
 }
 
-.toggle-btn.hidden:hover {
+#toggle-btn.hidden:hover {
   background-color: #728588;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   color: #fff;
