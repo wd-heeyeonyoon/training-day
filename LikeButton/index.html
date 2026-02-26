@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Like Button</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <h1>Animal preferences</h1>
+      <div class="gallery">
+        <div class="image-with-like-switch">
+          <img src="images/dog.jpg" alt="dog" class="animal-image" />
+          <label class="like-switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="image-with-like-switch">
+          <img src="images/cat.jpg" alt="cat" class="animal-image" />
+          <label class="like-switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="image-with-like-switch">
+          <img src="images/monkey.jpg" alt="monkey" class="animal-image" />
+          <label class="like-switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="image-with-like-switch">
+          <img src="images/capybara.jpg" alt="capybara" class="animal-image" />
+          <label class="like-switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <br />
+      <label id="like-count-label"
+        >Like count: <span id="like-count">0</span></label
+      >
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap; /* allow multiple rows */
+  justify-content: center; /* center the items horizontally */
+  gap: 10px; /* gap between items */
+}
+
+.image-with-like-switch {
+  display: flex;
+  flex-direction: column; /* image on top, switch under it */
+  align-items: center; /* center image + switch */
+}
+
+.animal-image {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  display: block;
+}
+
+.like-switch {
+  margin-top: 10px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.like-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "❤️";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  display: flex;
+  align-items: center; /* align-items → vertical alignment (top / middle / bottom)*/
+  justify-content: center; /* justify-content → horizontal alignment (left / center / right) but If you change to flex-direction: column, the roles swap (justify becomes vertical, align becomes horizontal)*/
+}
+
+input:checked + .slider {
+  background-color: #f321b1;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#like-count-label {
+  font-size: 20px;
+  display: inline-block;
+  border: 2px dashed #000;
+  border-radius: 50px;
+  padding: 15px;
+}
+
+#like-count {
+  font-weight: bold;
+}

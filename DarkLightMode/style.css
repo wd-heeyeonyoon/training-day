@@ -1,0 +1,76 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.toggle-btn {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-btn input {
+  display: none;
+}
+
+.slider {
+  position: absolute; /* Remove the element from normal flow and position it by top/left/right/bottom relative to its nearest positioned parent */
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Create a circular knob inside .slider before its content */
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input:checked + .slider {
+  background-color: #000000;
+  box-sizing: border-box;
+  border: 1px solid #ffffff;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 34px;
+  /* border: 1px solid #000000; */
+}
