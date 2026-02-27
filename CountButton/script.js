@@ -1,4 +1,5 @@
 let count = 0;
+/*
 let output = document.getElementById("output");
 
 function countClicks() {
@@ -6,12 +7,11 @@ function countClicks() {
   output.innerHTML = count;
   // console.log(count);
 }
+*/
 
-/*
-let btn = document.querySelector("button");
+let btn = document.querySelector("#btn");
 
 btn.addEventListener("click", () => {
-    count++;
-    output.innerHTML = count;
-})
- */
+  count++;
+  output.innerHTML = count;
+});
