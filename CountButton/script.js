@@ -1,17 +1,18 @@
 let count = 0;
 let output = document.getElementById("output");
 
+output.textContent = count;
 function countClicks() {
   count++;
-  output.innerHTML = count;
+  output.textContent = count;
   // console.log(count);
 }
 
 /*
-let btn = document.querySelector("button");
+let btn = document.querySelector("#btn");
 
 btn.addEventListener("click", () => {
-    count++;
-    output.innerHTML = count;
-})
- */
+  count++;
+  output.innerHTML = count;
+});
+*/
