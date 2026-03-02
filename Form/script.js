@@ -19,6 +19,7 @@ form.addEventListener("submit", (event) => {
   }
 });
 
+// get the values from the form
 const getFormValues = () => {
   return {
     fnameValue: fname.value.trim(),
@@ -53,6 +54,7 @@ const setSuccess = (element) => {
   inputContainer.classList.remove("error");
 };
 
+// validate the inputs
 const validateInputs = () => {
   console.log("validateInputs");
 
