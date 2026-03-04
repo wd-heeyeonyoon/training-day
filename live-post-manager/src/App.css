@@ -1,0 +1,29 @@
+.post-manager-container {
+  width: 500px;
+  margin: 40px auto;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.post-list {
+  list-style: disc;
+}
+.post-item {
+  margin-bottom: 20px;
+}
+.post-item-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+.empty-message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #666;
+}
