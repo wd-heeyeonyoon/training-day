@@ -26,10 +26,13 @@ function MemberEditorForm() {
   // Handle form submission
   const onSubmit = async (data) => {
     try {
+      // PUT - Updating mode
+      // POST - Creating new user mode
       const method = isUpdating ? "PUT" : "POST";
       const url = isUpdating
         ? "https://jsonplaceholder.typicode.com/users/2"
         : "https://jsonplaceholder.typicode.com/users";
+      // send http request to the server(url) using fetch
       const response = await fetch(url, {
         method,
         headers: {
