@@ -9,6 +9,9 @@ function LivePostManager() {
   const [loading, setLoading] = useState(true); // loading state
   const [lastClickTime, setLastClickTime] = useState(0); // track last click time
 
+  if (true) {
+    console.log("I am running");
+  }
   useEffect(() => {
     // fetch posts from API only once when the component mounts using empty dependency array
     const fetchPosts = async () => {
@@ -26,7 +29,7 @@ function LivePostManager() {
       }
     };
     fetchPosts();
-  }, []);
+  }, []); // since we use [] (empty dependency array), this will only run once when the component mounts
 
   if (loading) {
     return <p>Loading...</p>;
