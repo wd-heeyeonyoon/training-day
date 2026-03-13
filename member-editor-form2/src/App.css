@@ -2,13 +2,10 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
-.title {
-  font-size: 3em;
-  font-weight: bold;
-  margin-bottom: 0.7em;
+body {
+  background-color: var(--color-bg-primary);
 }
 
 .logo {
@@ -51,34 +48,6 @@
   margin-bottom: 1em;
 }
 
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75em 1em;
-  align-items: stretch;
-  justify-content: center;
-  margin-top: 4em;
-  margin-bottom: 1em;
-}
-
-.button-group-item {
-  flex: 1 1 0;
-  min-width: 120px;
-}
-
-.button-group-item > * {
-  width: 100%;
-}
-
-/* Bedrock Button: center label when full width (uses .pbr-btn and .pbr-btn-label) */
-.button-group-item .pbr-btn {
-  justify-content: center;
-}
-.button-group-item .pbr-btn .pbr-btn-label {
-  flex: 1;
-  text-align: center;
-}
-
 .form-label {
   display: block;
   font-size: 1.2em;
@@ -96,4 +65,31 @@
   margin-bottom: 1.5em;
   font-size: 1.2em;
   color: #666;
+}
+
+.member-editor-page {
+  max-width: 600px;
+  margin: 80px auto; /* Center the from block */
+}
+
+.member-form-card {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.member-form-card > * {
+  width: 100%;
+}
+
+/* Inside the form, text should be left aligned */
+.member-editor-page .member-form {
+  text-align: left;
+}
+
+/* Buttons centered horizontally under the fields */
+.member-editor-page .button-row {
+  margin-top: 24px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
 }
