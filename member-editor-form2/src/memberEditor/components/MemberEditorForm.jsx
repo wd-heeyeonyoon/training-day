@@ -63,7 +63,7 @@ function MemberEditorForm({ mode, defaultValues, onSubmit }) {
                     />
                   )}
                 />
-                /* debug */
+
                 {/* Job field */}
                 <Controller
                   name="job"
