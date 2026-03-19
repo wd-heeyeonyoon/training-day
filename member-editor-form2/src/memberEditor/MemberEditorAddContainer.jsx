@@ -10,9 +10,11 @@ function MemberEditorAddContainer({ onSuccess }) {
   const createMemberMutation = useMemberCreateMutation();
 
   const handleSubmit = async (formData) => {
-    // formData is the data from the MemberEditorForm
     try {
-      const result = await createMemberMutation.mutateAsync(formData);
+      const result = await createMemberMutation.mutateAsync({
+        name: formData.name,
+        company: { name: formData.company.name },
+      });
 
       // refresh member list so list page shows the latest data
       await queryClient.invalidateQueries({ queryKey: ["members"] });
@@ -34,7 +36,10 @@ function MemberEditorAddContainer({ onSuccess }) {
   return (
     <MemberEditorForm
       mode="create"
-      defaultValues={{ name: "", job: "" }}
+      defaultValues={{
+        name: "",
+        company: { name: "" },
+      }}
       onSubmit={handleSubmit}
     />
   );
