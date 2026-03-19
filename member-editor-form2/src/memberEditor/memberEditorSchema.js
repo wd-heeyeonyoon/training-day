@@ -6,8 +6,6 @@ export const memberEditorSchema = z.object({
     .min(3, { message: "Name must be at least 3 characters" })
     .nonempty({ message: "Name is required" }),
   company: z.object({
-    name: z
-      .string()
-      .nonempty({ message: "Company name is required" }),
+    name: z.string().nonempty({ message: "Company name is required" }),
   }),
 });
