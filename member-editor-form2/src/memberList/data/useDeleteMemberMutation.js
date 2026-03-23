@@ -1,3 +1,4 @@
+// Custom React Query mutation hook for deleting a member and refetching the list
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MEMBERS_QUERY_KEY } from "./useMembersListQuery";
 

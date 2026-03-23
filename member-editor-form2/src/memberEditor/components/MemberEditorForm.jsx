@@ -18,7 +18,7 @@ function MemberEditorForm({ mode, defaultValues, onSubmit }) {
     reset,
   } = useForm({ defaultValues, resolver: zodResolver(memberEditorSchema) });
 
-  // reset the form when defaultValues change
+  // reset the form when defaultValues change (when new member is edited from edit mode -> defaultValues change)
   useEffect(() => {
     reset(defaultValues);
   }, [defaultValues, reset]);
@@ -41,8 +41,8 @@ function MemberEditorForm({ mode, defaultValues, onSubmit }) {
                 <Heading1 level={1} textAlign="center">
                   {isUpdating ? "Member Edit Form" : "Member Add Form"}
                 </Heading1>
-                {/* Form */}
 
+                {/* Form */}
                 <form
                   className="member-form"
                   noValidate
@@ -51,6 +51,8 @@ function MemberEditorForm({ mode, defaultValues, onSubmit }) {
                   {/* Vertically stacked fields */}
                   <Stack spacing={24}>
                     {/* Name field */}
+                    {/* Connect Bedrock InputField with React Hook Form using Controller */}
+                    {/* Controller allows this field to be part of the form (like value, onChange, zod validation, reset, etc) */}
                     <Controller
                       name="name"
                       control={control}
@@ -65,6 +67,7 @@ function MemberEditorForm({ mode, defaultValues, onSubmit }) {
                       )}
                     />
 
+                    {/* Company name field */}
                     <Controller
                       name="company.name"
                       control={control}

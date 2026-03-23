@@ -21,6 +21,7 @@ function MemberListPage() {
   const handleEditClick = (memberId) => {
     navigate(`/members/${memberId}/edit`);
   };
+
   const handleDeleteClick = (memberId, name) => {
     const confirmed = window.confirm(
       `Are you sure you want to delete ${name}?`,
