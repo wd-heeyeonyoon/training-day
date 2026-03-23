@@ -1,4 +1,4 @@
-// this is a reusable dumb component - Only concerned with the form UI and Form error handling
+// this is a reusable dumb component - Only concerned with the form UI and Form error handling.
 import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
