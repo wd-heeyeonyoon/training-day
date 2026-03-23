@@ -68,12 +68,13 @@ body {
 }
 
 .member-editor-page {
-  max-width: 600px;
-  margin: 80px auto; /* Center the from block */
+  display: flex;
+  padding: 80px 0;
+  justify-content: center;
 }
 
 .member-form-card {
-  margin-top: 32px;
+  max-width: 600px;
   width: 100%;
 }
 
@@ -92,4 +93,69 @@ body {
   display: flex;
   gap: 8px;
   justify-content: center;
+}
+.member-list-page .button-row {
+  display: flex;
+  justify-content: center;
+}
+.member-list-card-wrapper {
+  max-width: 600px;
+  width: 100%;
+}
+
+.member-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.member-list-header {
+  display: flex;
+  align-items: center;
+  padding: 4px 0 8px;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+  color: #555;
+}
+
+.member-list-header-wrapper {
+  margin-bottom: 16px;
+}
+.member-header-name {
+  margin-left: 26px;
+}
+.member-header-company {
+  margin-left: 12px;
+}
+
+.member-header-name,
+.member-name {
+  flex: 2;
+}
+
+.member-header-company,
+.member-company {
+  flex: 2;
+  width: 140px;
+}
+
+.member-header-actions,
+.member-actions {
+  flex: 1;
+  width: 110px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.member-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0;
+  justify-content: flex-start;
+}
+
+.button-row {
+  margin-top: 24px;
 }

@@ -20,15 +20,18 @@ function MemberEditorEditContainer({ memberId, onSuccess }) {
 
   const defaultValues = {
     name: member.name ?? "",
-    job: member.job ?? "", // if there is no job in real API, then use "" as default value temporarily
+    company: { name: member.company?.name ?? "" },
   };
 
   const handleSubmit = async (formData) => {
     try {
       const result = await updateMemberMutation.mutateAsync({
-        // 'mutateAsync' is a method that allows us to mutate(update) the data in the database
         memberId,
-        ...formData,
+        name: formData.name,
+        company: {
+          ...member.company,
+          name: formData.company.name,
+        },
       });
 
       // refresh member list so list page shows the latest data
