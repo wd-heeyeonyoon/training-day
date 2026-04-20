@@ -1,17 +1,16 @@
 // Custom React Query mutation hook for deleting a member and refetching the list
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MEMBERS_QUERY_KEY } from "./useMembersListQuery";
+import { API_BASE_URL } from "../../api/apiClient.js";
 
 async function deleteMemberOnServer(memberId) {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${memberId}`,
-    { method: "DELETE" },
-  );
+  const response = await fetch(`${API_BASE_URL}/members/${memberId}`, {
+    method: "DELETE",
+  });
   if (!response.ok) {
-    throw new Error("Failed to delete member");
+    const errorText = await response.text();
+    throw new Error(errorText || "Failed to delete member");
   }
-  //const result = await response.json();
-  //return result;
   return true;
 }
 

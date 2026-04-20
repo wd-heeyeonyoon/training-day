@@ -1,16 +1,16 @@
 // Custom React Query hook for fetching the members list from the API
 import { useQuery } from "@tanstack/react-query";
+import { API_BASE_URL } from "../../api/apiClient.js";
 
 const MEMBERS_QUERY_KEY = ["members"];
 
 // Since MEMBERS_QUERY_KEY needs to be reused in Delete mutation, divide fetchMembers into a separate function
 async function fetchMembers() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const response = await fetch(`${API_BASE_URL}/members`);
   if (!response.ok) {
     throw new Error("Failed to fetch members");
   }
-  const result = await response.json();
-  return result;
+  return response.json();
 }
 
 export function useMembersListQuery() {
