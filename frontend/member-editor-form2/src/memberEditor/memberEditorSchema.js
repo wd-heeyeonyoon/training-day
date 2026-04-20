@@ -1,0 +1,11 @@
+import { z } from "zod";
+
+export const memberEditorSchema = z.object({
+  name: z
+    .string()
+    .min(3, { message: "Name must be at least 3 characters" })
+    .nonempty({ message: "Name is required" }),
+  company: z.object({
+    name: z.string().nonempty({ message: "Company name is required" }),
+  }),
+});
