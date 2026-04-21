@@ -4,6 +4,7 @@ import React from "react";
 import MemberEditorForm from "./components/MemberEditorForm.jsx";
 import { useMemberCreateMutation } from "./data/useMemberCreateMutation.js";
 import { useQueryClient } from "@tanstack/react-query";
+import { API_BASE_URL } from "../api/apiClient.js";
 
 function MemberEditorAddContainer({ onSuccess }) {
   const queryClient = useQueryClient();
@@ -21,7 +22,7 @@ function MemberEditorAddContainer({ onSuccess }) {
 
       alert(
         `Profile created successfully!\n` +
-          `Request: POST https://jsonplaceholder.typicode.com/users\n` +
+          `Request: POST ${API_BASE_URL}/members\n` +
           `Response: ${JSON.stringify(result)}\n`,
       );
 

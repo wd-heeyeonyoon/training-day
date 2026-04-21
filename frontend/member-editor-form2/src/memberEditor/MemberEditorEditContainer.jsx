@@ -4,6 +4,7 @@ import MemberEditorForm from "./components/MemberEditorForm.jsx";
 import { useMemberQuery } from "./data/useMemberQuery.js";
 import { useMemberUpdateMutation } from "./data/useMemberUpdateMutation.js";
 import { useQueryClient } from "@tanstack/react-query";
+import { API_BASE_URL } from "../api/apiClient.js";
 
 function MemberEditorEditContainer({ memberId, onSuccess }) {
   const queryClient = useQueryClient();
@@ -41,7 +42,7 @@ function MemberEditorEditContainer({ memberId, onSuccess }) {
 
       alert(
         `Profile updated successfully!\n` +
-          `Request: PUT https://jsonplaceholder.typicode.com/users/${memberId}\n` +
+          `Request: POST ${API_BASE_URL}/members\n` +
           `Response: ${JSON.stringify(result)}\n`,
       );
 
