@@ -3,9 +3,13 @@ import pool from "../../db.js";
 
 export async function getAllMembers() {
   const result = await pool.query(
-    "SELECT id, name, company_name AS companyName FROM members ORDER BY id",
+    "SELECT id, name, company_name FROM members ORDER BY id",
   );
-  return result.rows;
+  return result.rows.map((row) => ({
+    id: row.id,
+    name: row.name,
+    company: { name: row.company_name },
+  }));
 }
 
 export async function getMemberById(id) {
@@ -13,7 +17,13 @@ export async function getMemberById(id) {
     "SELECT id, name, company_name AS companyName FROM members WHERE id = $1",
     [id],
   );
-  return result.rows[0] || null;
+  const row = result.rows[0];
+  if (!row) return null;
+  return {
+    id: row.id,
+    name: row.name,
+    company: { name: row.company_name },
+  };
 }
 
 export async function createMember({ name, companyName }) {
@@ -23,7 +33,12 @@ export async function createMember({ name, companyName }) {
      RETURNING id, name, company_name AS companyName`,
     [name, companyName],
   );
-  return result.rows[0];
+  const row = result.rows[0];
+  return {
+    id: row.id,
+    name: row.name,
+    company: { name: row.company_name },
+  };
 }
 
 export async function updateMember(id, { name, companyName }) {
@@ -34,7 +49,13 @@ export async function updateMember(id, { name, companyName }) {
      RETURNING id, name, company_name AS companyName`,
     [name, companyName, id],
   );
-  return result.rows[0] || null;
+  const row = result.rows[0];
+  if (!row) return null;
+  return {
+    id: row.id,
+    name: row.name,
+    company: { name: row.company_name },
+  };
 }
 
 export async function deleteMember(id) {
