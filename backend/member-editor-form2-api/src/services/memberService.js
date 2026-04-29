@@ -1,46 +1,64 @@
 // src/services/memberService.js
+import pool from "../../db.js";
 
-// temporary in-memory "database"
-let members = [
-  { id: 1, name: "Leanne Graham", company: { name: "Romaguera-Crona" } },
-  { id: 2, name: "Ervin Howell", company: { name: "Deckow-Crist" } },
-  { id: 3, name: "Clementine Bauch", company: { name: "Romaguera-Jacobson" } },
-  { id: 4, name: "Patricia Lebsack", company: { name: "Lebsack-Bode" } },
-  { id: 5, name: "Chelsey Dietrich", company: { name: "Keebler-Lindgren" } },
-  { id: 6, name: "Mrs. Dennis Schulist", company: { name: "Howell-Schultz" } },
-  { id: 7, name: "Kurtis Weissnat", company: { name: "Considine-Lockman" } },
-];
-
-export function getAllMembers() {
-  return members;
+export async function getAllMembers() {
+  const result = await pool.query(
+    "SELECT id, name, company_name FROM members ORDER BY id",
+  );
+  return result.rows.map((row) => ({
+    id: row.id,
+    name: row.name,
+    company: { name: row.company_name },
+  }));
 }
 
-export function getMemberById(id) {
-  return members.find((m) => m.id === id);
-}
-
-export function createMember({ name, companyName }) {
-  const newMember = {
-    id: members.length ? Math.max(...members.map((m) => m.id)) + 1 : 1,
-    name,
-    company: { name: companyName },
+export async function getMemberById(id) {
+  const result = await pool.query(
+    "SELECT id, name, company_name AS companyName FROM members WHERE id = $1",
+    [id],
+  );
+  const row = result.rows[0];
+  if (!row) return null;
+  return {
+    id: row.id,
+    name: row.name,
+    company: { name: row.company_name },
   };
-  members.push(newMember);
-  return newMember;
 }
 
-export function updateMember(id, { name, companyName }) {
-  const member = members.find((m) => m.id === id);
-  if (!member) return null;
-
-  member.name = name;
-  member.company = { name: companyName };
-  return member;
+export async function createMember({ name, companyName }) {
+  const result = await pool.query(
+    `INSERT INTO members (name, company_name)
+     VALUES ($1, $2)
+     RETURNING id, name, company_name AS companyName`,
+    [name, companyName],
+  );
+  const row = result.rows[0];
+  return {
+    id: row.id,
+    name: row.name,
+    company: { name: row.company_name },
+  };
 }
 
-export function deleteMember(id) {
-  const index = members.findIndex((m) => m.id === id);
-  if (index === -1) return false;
-  members.splice(index, 1);
-  return true;
+export async function updateMember(id, { name, companyName }) {
+  const result = await pool.query(
+    `UPDATE members
+     SET name = $1, company_name = $2
+     WHERE id = $3
+     RETURNING id, name, company_name AS companyName`,
+    [name, companyName, id],
+  );
+  const row = result.rows[0];
+  if (!row) return null;
+  return {
+    id: row.id,
+    name: row.name,
+    company: { name: row.company_name },
+  };
+}
+
+export async function deleteMember(id) {
+  const result = await pool.query("DELETE FROM members WHERE id = $1", [id]);
+  return result.rowCount > 0;
 }

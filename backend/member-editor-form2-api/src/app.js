@@ -15,4 +15,8 @@ app.use(
 
 app.use("/api", memberRoutes);
 
+app.get("/", (req, res) => {
+  res.sendStatus(200);
+});
+
 export default app;
