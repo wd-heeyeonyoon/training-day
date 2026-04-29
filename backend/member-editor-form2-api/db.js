@@ -1,14 +1,11 @@
 // db.js
+import "dotenv/config";
 import pkg from "pg";
 
 const { Pool } = pkg;
 
 const pool = new Pool({
-  host: "localhost",
-  port: 5432,
-  user: "peakon",
-  password: "peakon",
-  database: "peakon_api",
+  connectionString: process.env.DATABASE_URL,
 });
 
 export default pool;
